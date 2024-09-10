@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import { Form } from 'react-router-dom';
 import './App.css';
+import { useState } from 'react';
+import React from 'react';
 
 function App() {
+  let [todolist,settodolist]=useState([])
+  let addtodo=(todo)=>
+  {
+     settodolist([...todolist,todo.newtodo])
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input type='text'></input>
+      <button type='submit' onClick={()=>addtodo(todo)}>ADD</button>
+      <h1>list</h1>
+    {
+    todolist.map((todo, index)=><h2 key={index}>{todo}</h2>)
+    }
     </div>
   );
 }
